@@ -5,11 +5,10 @@
 //   2. Hot lead signals → trigger sales team handoff
 //   3. Everything else → send to Claude AI
 // ─────────────────────────────────────────────────────────
-const { sendText, sendButtons } = require('../utils/whatsapp');
-const { askClaude }             = require('../ai/claude');
+const { sendText, sendButtons } = require('./whatsapp');
+const { askClaude }             = require('./claude');
 const { triggerHandoff }        = require('./handoffHandler');
 const menuHandler               = require('./menuHandler');
-
 // In-memory session store — tracks conversation state per customer
 // In production, replace with Redis or Firebase
 const sessions = new Map();
