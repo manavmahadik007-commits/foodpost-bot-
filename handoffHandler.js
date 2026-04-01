@@ -5,7 +5,7 @@
 //   2. Sends an alert to your sales team's WhatsApp
 //   3. Includes all collected context about the lead
 // ─────────────────────────────────────────────────────────
-const { sendText, sendButtons } = require('../utils/whatsapp');
+const { sendText, sendButtons } = require('./whatsapp')
 
 async function triggerHandoff(from, session, latestMessage) {
   // ── Message to the CUSTOMER ───────────────────────────
