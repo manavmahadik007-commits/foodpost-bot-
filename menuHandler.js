@@ -2,7 +2,7 @@
 // handlers/menuHandler.js
 // Sends formatted menu lists and service info to customers
 // ─────────────────────────────────────────────────────────
-const { sendText, sendList } = require('../utils/whatsapp');
+const { sendText, sendList } = require('./whatsapp')
 const { READY_MENU, SERVES_TWO, SERVICE_PRICING } = require('../data/products');
 
 async function sendMainMenu(from) {
