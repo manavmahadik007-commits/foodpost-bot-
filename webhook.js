@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────
 const express = require('express');
 const router = express.Router();
-const { routeMessage } = require('../handlers/messageRouter');
+const { routeMessage } = require('./messageRouter')
 
 // ── Step 1: Meta Webhook Verification ─────────────────────
 // Meta sends a GET request to verify your webhook URL.
