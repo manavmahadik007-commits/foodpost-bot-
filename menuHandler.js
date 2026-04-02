@@ -1,59 +1,63 @@
-// ─────────────────────────────────────────────────────────
-// handlers/menuHandler.js
-// Sends formatted menu lists and service info to customers
-// ─────────────────────────────────────────────────────────
-const { sendText, sendList } = require('./whatsapp')
-const { READY_MENU, SERVES_TWO, SERVICE_PRICING } = require('../data/products');
+const { sendText } = require('./whatsapp');
+
+const READY_MENU = [
+  { name: 'Upma',               price: 'Rs. 180' },
+  { name: 'Pohe',               price: 'Rs. 180' },
+  { name: 'Sheera',             price: 'Rs. 190' },
+  { name: 'Misal',              price: 'Rs. 165' },
+  { name: 'Pav Bhaji',          price: 'Rs. 190' },
+  { name: 'Rajma',              price: 'Rs. 205' },
+  { name: 'Dal Makhani',        price: 'Rs. 205' },
+  { name: 'Gujarati Dal',       price: 'Rs. 175' },
+  { name: 'Mix Dal',            price: 'Rs. 180' },
+  { name: 'Masala Dal',         price: 'Rs. 180' },
+  { name: 'Veg Biryani',        price: 'Rs. 205' },
+  { name: 'Biryani',            price: 'Rs. 190' },
+  { name: 'Pesto Rice',         price: 'Rs. 170' },
+  { name: 'Green Gravy',        price: 'Rs. 195' },
+  { name: 'Red Gravy',          price: 'Rs. 195' },
+  { name: 'Yellow Gravy',       price: 'Rs. 195' },
+  { name: 'Reshmi Tikka Gravy', price: 'Rs. 190' },
+  { name: 'Tikka Gravy',        price: 'Rs. 190' },
+  { name: 'Sarson Da Saag',     price: 'Rs. 190' },
+];
+
+const SERVES_TWO = [
+  { name: 'Koyla Makhani Gravy',    price: 'Rs. 310' },
+  { name: 'Koyla Dal Makhani',      price: 'Rs. 375' },
+  { name: 'Koyla Amritsari Rajma',  price: 'Rs. 350' },
+  { name: 'Chandni Chowk Ke Chana', price: 'Rs. 350' },
+];
 
 async function sendMainMenu(from) {
+  const s1 = READY_MENU.map(i => `• ${i.name.padEnd(22)} *${i.price}*`).join('\n');
+  const s2 = SERVES_TWO.map(i => `• ${i.name.padEnd(22)} *${i.price}*`).join('\n');
   const text =
     `*FoodPost Ready-to-Cook Menu* 🍱\n\n` +
-    `All dishes are dehydrated, with *no preservatives* and shelf life of 6–8 months.\n\n` +
-    `*Serves 1 person:*\n` +
-    READY_MENU.map(i => `• ${i.name.padEnd(24)} *${i.price}*`).join('\n') +
-    `\n\n*Serves 2 people (Premium):*\n` +
-    SERVES_TWO.map(i => `• ${i.name.padEnd(24)} *${i.price}*`).join('\n') +
-    `\n\nMin. order: *6 packets* (in-house menu) · *12 packets* (full order)\n\nTo order: +91 9867236115`;
-
+    `No preservatives · 6–8 months shelf life\n\n` +
+    `*Serves 1 person:*\n${s1}\n\n` +
+    `*Serves 2 people (Premium):*\n${s2}\n\n` +
+    `Min. order: *6 packets* (in-house) · *12 packets* (full)\n` +
+    `To order: +91 9867236115`;
   await sendText(from, text);
 }
 
 async function sendServiceInfo(from) {
   const text =
     `*FoodPost Dehydration Services* ⚗️\n\n` +
-    `We dehydrate or freeze-dry your home food, restaurant food, or custom ingredients.\n\n` +
     `*Service options:*\n` +
     `1. Only Dehydration / Vacuum Seal\n` +
     `2. Pick-up + Dehydration\n` +
-    `3. Pick-up + Dehydration + Courier (anywhere in the world)\n\n` +
+    `3. Pick-up + Dehydration + Courier (worldwide)\n\n` +
     `*Pricing:*\n` +
-    SERVICE_PRICING.map(s => `• ${s.name}: *${s.price}* (MOQ: ${s.moq})`).join('\n') +
-    `\n\n*Freeze drying batch days:* Tue, Thu, Sat\n` +
-    `📍 Up to 30 kg/day at Vile Parle · 30–100 kg/day at Nagpur facility\n\n` +
-    `*Food prep tips before sending:*\n` +
-    `• Use minimal oil/ghee\n` +
-    `• Cook dal with less water\n` +
-    `• Cut vegetables into small pieces\n` +
-    `• Grate paneer — no large chunks\n` +
-    `• Send in labelled disposable containers\n\n` +
-    `To book a pick-up: +91 9867236115`;
-
+    `• Heat Dehydration: *Rs. 375/kg* (MOQ: 3 kg)\n` +
+    `• Freeze Drying: *Rs. 400/kg* (MOQ: 20 kg)\n\n` +
+    `*Freeze drying batch days:* Tue, Thu, Sat\n` +
+    `Up to 30 kg/day at Vile Parle · 30–100 kg/day at Nagpur\n\n` +
+    `*Prep tips:*\n` +
+    `• Minimal oil/ghee\n• Dal with less water\n• Cut veggies small\n• Paneer grated only\n• Labelled disposable containers\n\n` +
+    `To book: +91 9867236115`;
   await sendText(from, text);
 }
 
-async function sendPricingInfo(from) {
-  const text =
-    `*FoodPost Pricing* 💰\n\n` +
-    `*Ready-to-cook packets:*\n` +
-    `• Starts from Rs. 150 (Misal, serves 1)\n` +
-    `• Up to Rs. 375 (Koyla Dal Makhani, serves 2)\n` +
-    `• Min. order: 6–12 packets\n\n` +
-    `*Dehydration / Freeze Drying Service:*\n` +
-    SERVICE_PRICING.map(s => `• ${s.name}: *${s.price}* | MOQ ${s.moq}`).join('\n') +
-    `\n\n*Packaging:* Silver or black pouches · up to 80g/packet · custom sizes available\n\n` +
-    `For B2B / bulk quotes: +91 9867236115`;
-
-  await sendText(from, text);
-}
-
-module.exports = { sendMainMenu, sendServiceInfo, sendPricingInfo };
+module.exports = { sendMainMenu, sendServiceInfo };
