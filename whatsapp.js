@@ -7,7 +7,7 @@ const axios = require('axios');
 
 const BASE_URL = 'https://graph.facebook.com/v18.0';
 const PHONE_ID = () => process.env.PHONE_NUMBER_ID;
-const TOKEN    = () => process.env.WHATSAPP_TOKEN;
+const TOKEN = () => (process.env.WHATSAPP_TOKEN || '').replace(/[\r\n\t\s]/g, '').trim();
 
 // ── Core send function ────────────────────────────────────
 async function sendRequest(payload) {
