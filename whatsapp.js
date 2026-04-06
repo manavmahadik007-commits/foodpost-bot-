@@ -108,5 +108,14 @@ async function markAsRead(messageId) {
     message_id: messageId,
   });
 }
-
-module.exports = { sendText, sendButtons, sendList, sendImage, markAsRead };
+// ── Send a document/PDF with optional caption ─────────────
+async function sendDocument(to, documentUrl, caption = '') {
+  return sendRequest({
+    messaging_product: 'whatsapp',
+    recipient_type: 'individual',
+    to,
+    type: 'document',
+    document: { link: documentUrl, caption, filename: 'FoodPost_Menu.pdf' },
+  });
+}
+module.exports = { sendText, sendButtons, sendList, sendImage, markAsRead, sendDocument };
