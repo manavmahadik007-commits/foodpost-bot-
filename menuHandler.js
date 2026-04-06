@@ -1,4 +1,4 @@
-const { sendText } = require('./whatsapp');
+const { sendText, sendDocument } = require('./whatsapp');
 
 const READY_MENU = [
   { name: 'Upma',               price: 'Rs. 180' },
@@ -30,16 +30,11 @@ const SERVES_TWO = [
 ];
 
 async function sendMainMenu(from) {
-  const s1 = READY_MENU.map(i => `• ${i.name.padEnd(22)} *${i.price}*`).join('\n');
-  const s2 = SERVES_TWO.map(i => `• ${i.name.padEnd(22)} *${i.price}*`).join('\n');
-  const text =
-    `*FoodPost Ready-to-Cook Menu* 🍱\n\n` +
-    `No preservatives · 6–8 months shelf life\n\n` +
-    `*Serves 1 person:*\n${s1}\n\n` +
-    `*Serves 2 people (Premium):*\n${s2}\n\n` +
-    `Min. order: *6 packets* (in-house) · *12 packets* (full)\n` +
-    `To order: +91 9867236115`;
-  await sendText(from, text);
+  await sendDocument(
+    from,
+    'https://raw.githubusercontent.com/manavmahadik007-commits/foodpost-bot-/main/menu.pdf',
+    'FoodPost Ready-to-Cook Menu 🍱\nNo preservatives · 6–8 months shelf life\nTo order: +91 9867236115'
+  );
 }
 
 async function sendServiceInfo(from) {
