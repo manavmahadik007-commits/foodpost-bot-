@@ -32,7 +32,7 @@ const SERVES_TWO = [
 async function sendMainMenu(from) {
   await sendDocument(
     from,
-    'https://drive.google.com/uc?export=download&id=1QPX63ARIV8BpXLXyMV22tk3XsXUbWx0G',
+    'https://raw.githubusercontent.com/manavmahadik007-commits/foodpost-bot-/main/menu.pdf',
     'FoodPost Ready-to-Cook Menu 🍱\nNo preservatives · 6–8 months shelf life\nTo order: +91 9867236115'
   );
 }
