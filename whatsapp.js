@@ -110,12 +110,24 @@ async function markAsRead(messageId) {
 }
 // ── Send a document/PDF with optional caption ─────────────
 async function sendDocument(to, documentUrl, caption = '') {
-  return sendRequest({
-    messaging_product: 'whatsapp',
-    recipient_type: 'individual',
-    to,
-    type: 'document',
-    document: { link: documentUrl, caption, filename: 'FoodPost_Menu.pdf' },
-  });
+  try {
+    return await sendRequest({
+      messaging_product: 'whatsapp',
+      recipient_type: 'individual',
+      to,
+      type: 'document',
+      document: { link: documentUrl, caption, filename: 'FoodPost_Menu.pdf' },
+    });
+  } catch (err) {
+    console.error('sendDocument failed:', JSON.stringify(err.response?.data || err.message));
+    // Fallback to text if PDF fails
+    return sendRequest({
+      messaging_product: 'whatsapp',
+      recipient_type: 'individual',
+      to,
+      type: 'text',
+      text: { body: `📋 View our menu here:\nhttps://raw.githubusercontent.com/manavmahadik007-commits/foodpost-bot-/main/menu.pdf\n\n${caption}` }
+    });
+  }
 }
 module.exports = { sendText, sendButtons, sendList, sendImage, markAsRead, sendDocument };
