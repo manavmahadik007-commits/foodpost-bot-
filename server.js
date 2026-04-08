@@ -9,6 +9,7 @@ app.get('/', (req, res) => {
 
 app.use('/webhook', require('./webhook'));
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`FoodPost Bot listening on port ${process.env.PORT || 3000}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`FoodPost Bot listening on port ${PORT}`);
 });
