@@ -7,7 +7,7 @@ const { sendText, sendDocument } = require('./whatsapp');
 // 4. Copy the file ID from the URL:
 //    https://drive.google.com/file/d/FILE_ID_HERE/view
 // 5. Replace FILE_ID_HERE below with your actual file ID
-const MENU_PDF_URL = 'https://drive.google.com/uc?export=download&id=FILE_ID_HERE';
+const MENU_PDF_URL = 'https://drive.google.com/uc?export=download&id=1ETcARp9mc6VV2s8tsVpJbS_Lez0inCer';
 
 async function sendMainMenu(to) {
   try {
