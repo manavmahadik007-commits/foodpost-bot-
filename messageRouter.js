@@ -33,8 +33,8 @@ function scoreMessage(text, session) {
 }
 
 const GREETINGS  = ['hi','hii','hiii','hello','hey','namaste','helo','start','good morning','good afternoon','good evening'];
-const MENU_KW    = ['menu', 'packets', 'dishes', 'items', 'what do you have', 'what do you sell', 'price', 'rate', 'cost', 'how much', 'kin'];
-const SERVICE_KW = ['dehydrat','freeze','preserve','pick up','pickup','send my food','ghar ka khana','my own food','dehydrate my food'];
+const MENU_KW    = ['see our menu', 'menu', 'packets', 'dishes', 'items', 'what do you have', 'what do you sell', 'price', 'rate', 'cost', 'how much', 'kin'];
+const SERVICE_KW = ['dehydrate my food', 'dehydrat', 'freeze', 'preserve', 'pick up', 'pickup', 'send my food', 'ghar ka khana', 'my own food'];
 const CONTACT_KW = ['talk','speak','human','person','team','contact','call us now','call','talk to our team'];
 const ORDER_KW   = ['order','place an order','buy','purchase','book'];
 const B2B_KW     = ['business inquiry','business','restaurant','b2b','bulk','wholesale'];
