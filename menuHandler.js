@@ -44,18 +44,27 @@ async function sendMainMenu(to) {
 
 async function sendServiceInfo(to) {
   await sendText(to,
-    `🏠 *Dehydrate Your Own Food — "Ghar Ka Khana" Service*\n\n` +
-    `If you're in Mumbai, we can:\n` +
-    `✅ Pick up your home-cooked food\n` +
-    `✅ Dehydrate or freeze-dry it\n` +
-    `✅ Package in single-serving ready-to-cook packets\n` +
-    `✅ Deliver back to you or ship anywhere\n\n` +
-    `*No preservatives. Exact same taste. All nutrients intact.*\n\n` +
-    `📍 Sai Prasad, Nanda Patkar Road, Vile Parle (E), Mumbai 400057\n` +
-    `📞 +91 98672 36115 | +91 98207 33103\n` +
-    `📸 @foodpostit on Instagram\n\n` +
-    `📅 *Ready to get started? Book your slot here:*\n` +
-    `http://www.food-post.in/book-your-slot`
+    `🏠 *Dehydrate Your Food with FoodPost!*\n\n` +
+    `Send us your home-cooked food or favourite restaurant food — we dehydrate or freeze-dry it and pack it into ready-to-cook packets. Ships anywhere in the world!\n\n` +
+    `*💰 Pricing:*\n` +
+    `• Heat Dehydration: *Rs. 375/kg* (MOQ: 3 kg)\n` +
+    `• Freeze Drying: *Rs. 400/kg* (MOQ: 20 kg)\n\n` +
+    `*✅ What we offer:*\n` +
+    `• Only Dehydration / Vacuum Seal\n` +
+    `• Pick-up + Dehydration\n` +
+    `• Pick-up + Dehydration + Courier _(worldwide)_\n\n` +
+    `*📋 Quick prep tips:*\n` +
+    `• Minimal oil / ghee\n` +
+    `• Dal with less water\n` +
+    `• Cut vegetables small\n` +
+    `• Paneer must be *grated only*\n` +
+    `• Send in labelled disposable containers\n\n` +
+    `━━━━━━━━━━━━━━━━━━━━━\n` +
+    `📅 *Ready to book your slot?*\n` +
+    `Tap the link below to book directly on our website:\n\n` +
+    `👉 http://www.food-post.in/book-your-slot\n\n` +
+    `📞 Questions? Call us:\n` +
+    `+91 9867236115 | +91 9820733103`
   );
 }
 
