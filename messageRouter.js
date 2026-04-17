@@ -63,13 +63,13 @@ async function routeMessage(from, text) {
     await sendWelcome(from);
     return;
   }
+  if (SERVICE_KW.some(k => lower.includes(k))) {
+    await sendServiceInfo(from);
+    return;
+  }
   if (MENU_KW.some(k => lower.includes(k))) {
     session.stage = 'browsing';
     await sendMainMenu(from);
-    return;
-  }
-  if (SERVICE_KW.some(k => lower.includes(k))) {
-    await sendServiceInfo(from);
     return;
   }
   if (CONTACT_KW.some(k => lower.includes(k))) {
